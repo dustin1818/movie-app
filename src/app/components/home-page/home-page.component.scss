@@ -1,0 +1,10 @@
+.carousel-inner {
+  height: 100%;
+
+  .carousel-item {
+    img {
+      object-fit: cover;
+      object-position: bottom center;
+    }
+  }
+}

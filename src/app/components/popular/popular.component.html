@@ -1,0 +1,27 @@
+<div class="container-fluid p-3">
+    <h2 class="my-3 mb-4 text-center">Popular TV Series</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @for(movie of movies; track movie.id; let i = $index) {
+        <div class="col">
+            <div class="card h-100 p-4 bg-dark text-white">
+                <h5 style="text-decoration: underline;">{{ movie.name }}</h5>
+                <p>{{ movie.overview }}</p>
+                <a class="btn btn-primary my-3" [routerLink]="'/info/tv/' + movie.id">Watch
+                    Now</a>
+
+                <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+                    class="img-fluid w-100 h-100 object-fit-cover" alt="...">
+            </div>
+        </div>
+        }
+    </div>
+
+    <nav class="mt-4" aria-label="Page navigation example">
+        <ul class="pagination d-flex flex-wrap gap-2">
+            @for (page of pages; track page) {
+            <li class="page-item"><button [class]="{'page-link': true, 'active': page === pageNumber}"
+                    (click)="loadPage(page)">{{page}}</button></li>
+            }
+        </ul>
+    </nav>
+</div>
