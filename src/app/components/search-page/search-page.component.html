@@ -4,24 +4,24 @@
 
 @else {
     <div class="container-fluid py-4">
-        <h2 class="mb-4 text-center fw-bold">Popular TV Series</h2>
+        <h2 class="mb-4 text-center fw-bold">Search Results</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
-          @for (movie of movies; track movie.id; let i = $index) {
+          @for (movie of searchResults; track movie.id; let i = $index) {
             <div class="col d-flex">
               <div class="card h-100 w-100 bg-dark text-white shadow-sm border-0">
                 <img
-                  [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path"
+                  [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path || movie.poster_path"
                   class="card-img-top object-fit-cover"
                   style="aspect-ratio: 16/9; min-height: 180px; background: #222;"
-                  [alt]="movie.name + ' Poster'"
+                  [alt]="(movie.title || movie.name) + ' Poster'"
                 >
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title text-truncate" title="{{ movie.name }}">{{ movie.name }}</h5>
+                  <h5 class="card-title text-truncate" title="{{ movie.title || movie.name }}">{{ movie.title || movie.name }}</h5>
                   <p class="card-text text-white-50 text-truncate" style="max-height: 3.5em; overflow: hidden;" title="{{ movie.overview }}">
                     {{ movie.overview }}
                   </p>
                   <div class="mt-auto">
-                    <a class="btn btn-primary w-100" [routerLink]="'/info/tv/' + movie.id">
+                    <a class="btn btn-primary w-100" [routerLink]="'/info/' + movie.media_type + '/' + movie.id">
                       <i class="bi bi-play-fill"></i> Watch Now
                     </a>
                   </div>

@@ -9,13 +9,13 @@
         <div class="carousel-inner">
             @for(movie of movies; track movie.id) {
             <div [class]="movie.id === movies[0].id ? 'carousel-item active' : 'carousel-item'">
-                <div class="carousel-caption mb-5 w-50 mx-auto bg-dark p-3 rounded-3">
-                    <h5>{{ movie.title }}</h5>
-                    <p>{{ movie.overview }}</p>
-                    <a class="btn btn-primary my-3" [routerLink]="'/info/' + movie.media_type + '/' + movie.id">Watch
+                <div class="carousel-caption mb-5 w-75 w-md-25 mx-auto bg-dark p-3 p-md-4 rounded-3">
+                    <h5>{{ movie.title || movie.name }}</h5>
+                    <p class="text-truncate" style="overflow: hidden;">{{ movie.overview }}</p>
+                    <a class="btn btn-primary my-1" [routerLink]="'/info/' + movie.media_type + '/' + movie.id">Watch
                         Now</a>
                 </div>
-                <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" class="img-fluid w-100 h-100"
+                <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" class="img-fluid w-100 h-100 "
                     alt="...">
             </div>
             }

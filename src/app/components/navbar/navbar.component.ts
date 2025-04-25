@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,4 +9,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
 
+  constructor(private router: Router){}
+
+  filterMovieResults(filter: string) {
+    if(filter && filter.trim()){
+      this.router.navigate(['/search', filter.trim()]);
+    }
+  }
 }

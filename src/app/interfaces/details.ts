@@ -4,6 +4,7 @@ export interface Details {
     created_by: { id: number, credit_id: string, name: string, original_name: string, profile_path: string }[];
     episode_run_time: number[];
     first_air_date: string;
+    release_date: string;
     genres: { id: number, name: string }[];
     homepage: string;
     id: number;
@@ -12,6 +13,7 @@ export interface Details {
     last_air_date: string;
     last_episode_to_air: {};
     name: string;
+    title: string;
     networks: { id: number, logo_path: string, name: string, origin_country: string }[];
     number_of_episodes: number;
     number_of_seasons: number;
@@ -29,6 +31,7 @@ export interface Details {
     status: string;
     tagline: string;
     type: string;
+    media_type: string;
     vote_average: number;
     vote_count: number;
 }

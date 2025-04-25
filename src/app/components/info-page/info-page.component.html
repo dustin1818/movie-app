@@ -4,20 +4,18 @@
 @else {
 <div class="container-fluid mt-4">
     @if (details) {
-    {{id}}
-    {{type}}
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <img [src]="'https://image.tmdb.org/t/p/w500' + details.poster_path" class="img-fluid rounded shadow"
-                alt="{{details.name}}">
+                alt="{{details.name || details.title}}">
         </div>
-        <div class="col-md-8">
-            <h1 class="mb-2">{{details.name}}</h1>
+        <div class="col-md-9">
+            <h1 class="mb-2">{{details.name || details.title}}</h1>
             <p class="text-muted">{{details.tagline}}</p>
 
             <div class="d-flex align-items-center mb-3">
                 <span class="badge bg-primary me-2">{{details.vote_average}}</span>
-                <span class="text-muted">{{details.first_air_date}} •
+                <span class="text-muted">{{details.first_air_date || details.release_date}} •
                     @if (details.episode_run_time && details.episode_run_time.length > 0) {
                     {{details.episode_run_time[0]}} min
                     }
@@ -35,12 +33,12 @@
 
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <p><strong>First Air Date:</strong> {{details.first_air_date}}</p>
+                    <p><strong>First Air Date:</strong> {{details.first_air_date || details.release_date}}</p>
                     <p><strong>Original Language:</strong> {{details.original_language}}</p>
                     <p><strong>Status:</strong> {{details.status}}</p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>Type:</strong> {{details.type}}</p>
+                    <p><strong>Type:</strong> {{details.type || details.media_type}}</p>
                     <p><strong>Episodes:</strong> {{details.number_of_episodes}}</p>
                     <p><strong>Seasons:</strong> {{details.number_of_seasons}}</p>
                 </div>
