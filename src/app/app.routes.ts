@@ -6,6 +6,8 @@ import { InfoPageComponent } from './components/info-page/info-page.component';
 import { EpisodesPageComponent } from './components/episodes-page/episodes-page.component';
 import { PopularMoviesComponent } from './components/popular-movies/popular-movies.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { NowShowingComponent } from './components/now-showing/now-showing.component';
 
 export const routes: Routes = [
     {
@@ -19,6 +21,14 @@ export const routes: Routes = [
     {
         path: 'popular-movies',
         component: PopularMoviesComponent
+    },
+    {
+        path: 'top-rated',
+        component: TopRatedComponent
+    },
+    {
+        path: 'now-showing',
+        component: NowShowingComponent
     },
     {
         path: 'search/:query',

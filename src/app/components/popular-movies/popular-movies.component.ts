@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Popular } from '../../interfaces/popular';
+import { Popular } from '../../interfaces/movies';
 import { DataService } from '../../services/data.service';
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../loading/loading.component';
@@ -37,6 +37,7 @@ export class PopularMoviesComponent {
     this.pageNumber = page;
     this.dataService.getPopularMovies(page).subscribe((res: any) => {
       this.movies = res.results;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     })
   }
 }

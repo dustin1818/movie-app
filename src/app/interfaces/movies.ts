@@ -16,3 +16,9 @@ export interface Movies {
     vote_average: number;
     vote_count: number;
 }
+
+export interface Popular extends Movies {
+    origin_country: string[];
+    original_name: string;
+    first_air_date: string;
+}

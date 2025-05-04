@@ -25,6 +25,14 @@ export class DataService {
     return this.http.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, this.options) ?? 'Error fetching popular movies';
   }
 
+  getTopRatedMovies(page: number = 1) {
+    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`, this.options) ?? 'Error fetching top rated movies';
+  }
+  
+  getNowShowingMovies(page: number = 1) {
+    return this.http.get(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, this.options) ?? 'Error fetching now showing movies';
+  }
+
   getDetails(id: string, type: string) {
     return this.http.get(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, this.options)
   }

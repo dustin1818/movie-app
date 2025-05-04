@@ -1,4 +1,8 @@
 
-<div class="container-fluid p-0 h-100">
-    <iframe [src]="'https://vidsrc.net/embed/' + type + '?tmdb=' + id | safe" frameborder="0" referrerpolicy="origin" allowfullscreen></iframe>
+<div class="container-fluid p-2 p-md-4">
+    <iframe [src]="'https://vidsrc.net/embed/' + type + '?tmdb=' + id + '&quality=hd' | safe" 
+    frameborder="0" 
+    referrerpolicy="origin" 
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
 </div>

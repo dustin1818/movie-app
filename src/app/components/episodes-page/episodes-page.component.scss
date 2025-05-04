@@ -1,7 +1,11 @@
 iframe {
-    height: 100%;
-    min-height: 100vh;
     width: 100%;
+    image-rendering: high-quality;
+    aspect-ratio: 16/9;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    filter: none;
 
     @media screen and (max-width: 576px) {
         min-height: 93vh;
