@@ -26,6 +26,10 @@ export class InfoPageComponent {
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
+  get firstFourVideos() {
+    return this.videos?.results?.slice(0, 4) || [];
+  }
+
   ngOnInit(): void {
     this.isLoading = true;
     this.route.paramMap.subscribe(params => {

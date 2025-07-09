@@ -1,116 +1,153 @@
 @if (isLoading) {
 <app-loading></app-loading>
-}
-@else {
+} @else {
 <div class="container-fluid mt-4">
-    @if (details) {
-    <div class="row">
-        <div class="col-md-3">
-            <img [src]="'https://image.tmdb.org/t/p/w500' + details.poster_path" class="img-fluid rounded shadow"
-                alt="{{details.name || details.title}}">
-        </div>
-        <div class="col-md-9">
-            <h1 class="mb-2 mt-4 mt-md-0">{{details.name || details.title}}</h1>
-            <p class="text-muted">{{details.tagline}}</p>
-
-            <div class="d-flex align-items-center mb-3">
-                <span class="badge bg-primary me-2">{{details.vote_average}}</span>
-                <span class="text-muted">{{details.first_air_date || details.release_date}} •
-                    @if (details.episode_run_time && details.episode_run_time.length > 0) {
-                    {{details.episode_run_time[0]}} min
-                    }
-                </span>
-            </div>
-
-            <div class="mb-3">
-                @for (genre of details.genres; track genre.id) {
-                <span class="badge bg-secondary me-1 mb-1">{{genre.name}}</span>
-                }
-            </div>
-
-            <h5>Overview</h5>
-            <p>{{details.overview}}</p>
-
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <p><strong>First Air Date:</strong> {{details.first_air_date || details.release_date}}</p>
-                    <p><strong>Original Language:</strong> {{details.original_language}}</p>
-                    <p><strong>Status:</strong> {{details.status}}</p>
-                </div>
-                <div class="col-md-6">
-                    <p><strong>Type:</strong> {{details.type || details.media_type}}</p>
-                    <p><strong>Episodes:</strong> {{details.number_of_episodes}}</p>
-                    <p><strong>Seasons:</strong> {{details.number_of_seasons}}</p>
-                </div>
-            </div>
-
-            @if (videos && videos.results.length > 0) {
-            <div class="mt-4">
-                <h5>Videos</h5>
-                <div class="row">
-                    @for (video of videos.results; track video?.id) {
-                    <div class="col-md-6 mb-3">
-                        <div class="ratio ratio-16x9">
-                            <iframe [src]="'https://www.youtube.com/embed/' + video.key | safe" title="{{video.name}}"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <p class="mt-1 mb-0"><small>{{video.name}}</small></p>
-                        <p class="text-muted"><small>{{video.type}}</small></p>
-                    </div>
-                    }
-                </div>
-            </div>
-            }
-
-            @if (details.networks && details.networks.length > 0) {
-            <div class="mt-3">
-                <h5>Networks</h5>
-                <div class="d-flex flex-wrap">
-                    @for (network of details.networks; track network.id) {
-                    <span class="badge bg-dark me-1 mb-1">{{network.name}}</span>
-                    }
-                </div>
-            </div>
-            }
-
-            @if (details.production_companies && details.production_companies.length > 0) {
-            <div class="mt-3">
-                <h5>Production Companies</h5>
-                <div class="d-flex flex-wrap">
-                    @for (company of details.production_companies; track company.id) {
-                    <span class="badge bg-dark me-1 mb-1">{{company.name}}</span>
-                    }
-                </div>
-            </div>
-            }
-
-
-            <button class="btn btn-primary my-3 w-100" [routerLink]="'/episodes/' + type + '/' + id">Watch Now</button>
-
-            @if (details.seasons && details.seasons.length > 0) {
-            <div class="mt-3">
-                <h5>Seasons</h5>
-                <div class="row">
-                    @for (season of details.seasons; track season.id) {
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            @if (season.poster_path) {
-                            <img [src]="'https://image.tmdb.org/t/p/original' + season.poster_path" class="card-img-top"
-                                alt="{{season.name}}">
-                            }
-                            <div class="card-body">
-                                <h6 class="card-title">{{season.name}}</h6>
-                                <p class="card-text small">Episodes: {{season.episode_count}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                </div>
-            </div>
-            }
-        </div>
+  @if (details) {
+  <div class="row">
+    <div class="col-md-3">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + details.poster_path"
+        class="img-fluid rounded shadow"
+        alt="{{ details.name || details.title }}"
+      />
     </div>
-    }
+    <div class="col-md-9">
+      <h1 class="mb-2 mt-4 mt-md-0">{{ details.name || details.title }}</h1>
+      <p class="text-muted">{{ details.tagline }}</p>
+
+      <div class="d-flex align-items-center mb-3">
+        <span class="badge bg-primary me-2">{{ details.vote_average }}</span>
+        <span class="text-muted"
+          >{{ details.first_air_date || details.release_date }} • @if
+          (details.episode_run_time && details.episode_run_time.length > 0) {
+          {{ details.episode_run_time[0] }} min }
+        </span>
+      </div>
+
+      <div class="mb-3">
+        @for (genre of details.genres; track genre.id) {
+        <span class="badge bg-secondary me-1 mb-1">{{ genre.name }}</span>
+        }
+      </div>
+
+      <h5>Overview</h5>
+      <p>{{ details.overview }}</p>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <p>
+            <strong>First Air Date:</strong>
+            {{ details.first_air_date || details.release_date }}
+          </p>
+          <p>
+            <strong>Original Language:</strong> {{ details.original_language }}
+          </p>
+          <p><strong>Status:</strong> {{ details.status }}</p>
+        </div>
+        <div class="col-md-6">
+            @if(details.type){
+                <p><strong>Type:</strong> {{ details.type ?? details.media_type }}</p>
+            }
+            @if(details.number_of_episodes){
+                <p><strong>Episodes:</strong> {{ details.number_of_episodes }}</p>
+            }
+            @if(details.number_of_seasons){
+                <p><strong>Seasons:</strong> {{ details.number_of_seasons }}</p>
+            }
+        </div>
+      </div>
+
+      <div
+        class="
+            "
+      >
+        @if (videos && videos.results.length > 0) {
+        <div class="mt-4">
+          <h5>Videos</h5>
+          <div class="row">
+            @for (video of firstFourVideos; track video?.id) {
+            <div class="col-md-6 mb-3">
+              <div class="ratio ratio-16x9">
+                <iframe
+                  [src]="'https://www.youtube.com/embed/' + video.key | safe"
+                  title="{{ video.name }}"
+                  allowfullscreen
+                >
+                </iframe>
+              </div>
+              <p class="mt-1 mb-0">
+                <small>{{ video.name }}</small>
+              </p>
+              <p class="text-muted">
+                <small>{{ video.type }}</small>
+              </p>
+            </div>
+            }
+          </div>
+        </div>
+        } @else{
+        <app-loading></app-loading>
+        }
+      </div>
+
+      @if (details.networks && details.networks.length > 0) {
+      <div class="mt-3">
+        <h5>Networks</h5>
+        <div class="d-flex flex-wrap">
+          @for (network of details.networks; track network.id) {
+          <span class="badge bg-dark me-1 mb-1">{{ network.name }}</span>
+          }
+        </div>
+      </div>
+      } @if (details.production_companies && details.production_companies.length
+      > 0) {
+      <div class="mt-3">
+        <h5>Production Companies</h5>
+        <div class="d-flex flex-wrap">
+          @for (company of details.production_companies; track company.id) {
+          <span class="badge bg-dark me-1 mb-1">{{ company.name }}</span>
+          }
+        </div>
+      </div>
+      }
+
+      <button
+        class="btn btn-primary my-3 w-100"
+        [routerLink]="'/episodes/' + type + '/' + id"
+      >
+        Watch Now
+      </button>
+
+      @if (details.seasons && details.seasons.length > 0) {
+      <div class="mt-3">
+        <h5>Seasons</h5>
+        <div class="row">
+          @for (season of details.seasons; track season.id) {
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              @if (season.poster_path) {
+              <img
+                [src]="
+                  'https://image.tmdb.org/t/p/original' + season.poster_path
+                "
+                class="card-img-top"
+                alt="{{ season.name }}"
+              />
+              }
+              <div class="card-body">
+                <h6 class="card-title">{{ season.name }}</h6>
+                <p class="card-text small">
+                  Episodes: {{ season.episode_count }}
+                </p>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
 </div>
 }
